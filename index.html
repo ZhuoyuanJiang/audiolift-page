@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="AudioLift turns a single portrait and audio into a full-head 3D Gaussian talking avatar by generating synchronized multi-view videos and lifting them with an inconsistency-robust Gaussian reconstructor.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AudioLift: Audio-Driven Single Image to Full-Head Gaussian Avatar via Multi-view Video Generation</title>
+  <link rel="icon" href="./static/images/icon.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/project.css">
+</head>
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">
+            AudioLift: Audio-Driven Single Image to<br>Full-Head Gaussian Avatar via Multi-view Video Generation
+          </h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Zhuoyuan Jiang<sup>1</sup>,</span>
+            <span class="author-block">Weijie Lyu<sup>2</sup>,</span>
+            <span class="author-block">Xiaoyuan Wang<sup>3</sup>,</span>
+            <span class="author-block">Tiancheng Shen<sup>2</sup>,</span>
+            <span class="author-block">Ming-Hsuan Yang<sup>2</sup></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Yale University,</span>
+            <span class="author-block"><sup>2</sup>University of California, Merced,</span>
+            <span class="author-block"><sup>3</sup>Carnegie Mellon University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" title="Coming soon">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" title="Coming soon">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://youtu.be/STlQlFtmQ5M" class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" title="Coming soon">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <img src="./static/images/teaser.jpg" alt="AudioLift teaser" width="100%" class="teaser-img">
+        </div>
+      </div>
+    </div>
+    <h2 class="subtitle has-text-centered">
+      <i>AudioLift</i> turns a single portrait and an audio clip into a <b style="color:hsl(204, 86%, 53%)">full-head 3D Gaussian talking avatar</b>, with no parametric face model and no per-instance optimization. <b style="color:hsl(204, 86%, 53%)">Generated multi-view videos</b> are the intermediate representation: an audio-conditioned video model synthesizes synchronized views, and an inconsistency-robust Gaussian reconstructor lifts every frame to 3D, so the avatar can be rendered at any time from any viewpoint across the full 360° range, keeping extreme expressions and facial accessories.
+    </h2>
+  </div>
+</section>
+<!-- Abstract. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>Existing 3D talking avatar methods mainly rely on parametric face models including 3DMM or FLAME, whose compact motion representations limit the models' ability to synthesize extreme expressions and to model facial accessories. We introduce <i>AudioLift</i>, a two-stage framework that uses <b style="color:hsl(204, 86%, 53%)">generated multi-view videos</b> as the intermediate representation for audio-driven avatar generation without parametric face models or per-instance optimization. Our framework combines a <b style="color:hsl(204, 86%, 53%)">synchronized multi-view video generation</b> stage with an <b style="color:hsl(204, 86%, 53%)">inconsistency-robust Gaussian reconstruction</b> stage to recover coherent full-head geometry from a single portrait image. Extensive experiments demonstrate that <i>AudioLift</i> produces 3D talking avatars capable of capturing more extreme facial expressions than existing methods, with improved geometric completeness and strong multi-view consistency across the full 360° viewing range.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Video. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/STlQlFtmQ5M?rel=0" title="AudioLift narrated video"
+                  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+        </div>
+        <p class="has-text-centered" style="margin-top:10px;color:#777;font-size:0.9rem">12:13 · narrated overview, then results with the original speech</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Video. -->
+<!-- Method. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <h3 class="title is-4 has-text-centered">Two-Stage Pipeline</h3>
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <img src="static/images/stage1.png" width="100%" alt="Stage I: audio-driven multi-view generation">
+              <div class="content has-text-justified method-text"><b>Stage I: audio-driven multi-view generation.</b> Five synchronized videos are generated from a single portrait and speech. The clean reference view conditions the denoiser, and the side and frontal views are interleaved into one token sequence where <b style="color:hsl(204, 86%, 53%)">shared self-attention</b> couples the views and promotes cross-view consistency.</div>
+            </div>
+            <div class="column">
+              <img src="static/images/stage2.png" width="100%" alt="Stage II: 3D Gaussian sequence reconstruction">
+              <div class="content has-text-justified method-text"><b>Stage II: 3D Gaussian sequence reconstruction.</b> A fine-tuned feed-forward reconstructor lifts the generated frames at each timestamp to a 3D Gaussian avatar. It is trained with <b style="color:hsl(204, 86%, 53%)">view-aware corruption</b> and <b style="color:hsl(204, 86%, 53%)">active-volume regularization</b> to tolerate inconsistent views, and completes unseen rear regions through conservative rear-prior distillation. The resulting Gaussian sequence can be rendered from any viewpoint at any time.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Method. -->
+<!-- Method / Training data. -->
+<section class="section training-data" id="training-data">
+  <div class="container is-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4 has-text-centered">Training Data</h3>
+        <p class="has-text-centered results-intro">NeRSemble speech recordings: 328 identities, 2,641 clips (ten more identities held out).
+        No synthetic data and no face-model fitting; the only processing is background matting and framing.</p>
+        <div class="columns is-centered sync-row" data-row="tdv2">
+          <div class="column is-11">
+            <video class="demo-video" data-row="tdv2" data-method="ours" src="media/training_data_e/rig_raw.mp4" poster="media/training_data_e/rig_raw.jpg"
+                   width="100%" muted loop playsinline preload="metadata"></video>
+            <div class="content has-text-justified tdata-caption"><b>16 synchronized cameras.</b> The raw camera streams as
+            mounted (upper and lower row, left to right; 73 fps, 2200×3208). <span style="color:hsl(204, 86%, 53%)">Blue</span>: the frontal camera.
+            <span style="color:rgb(240,140,30)">Orange</span>: the four outermost cameras of the arc, which form the 2×2 canvas.</div>
+          </div>
+        </div>
+        <h4 class="title is-5 has-text-centered block-title">Stage I · from a capture to a training clip</h4>
+        <div class="flow-row sync-row" data-row="tdv2">
+          <div class="flow-cell">
+            <video class="demo-video" data-row="tdv2" data-method="ours" src="media/training_data_v2/s1_raw.mp4" poster="media/training_data_v2/s1_raw.jpg"
+                   width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">Raw frame</b>
+            <span class="v2-text">Frontal camera, 2200×3208, studio background.</span>
+          </div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-cell">
+            <video class="demo-video" data-row="tdv2" data-method="ours" src="media/training_data_v2/s1_alpha.mp4" poster="media/training_data_v2/s1_alpha.jpg"
+                   width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">Alpha matte</b>
+            <span class="v2-text">BackgroundMattingV2 against the rig's recorded empty-background plate.</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-cell">
+            <video class="demo-video" data-row="tdv2" data-method="ours" src="media/training_data_v2/s1_matted.mp4" poster="media/training_data_v2/s1_matted.jpg"
+                   width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">White composite, 416×608</b>
+            <span class="v2-text">Foreground on white, resized to fit the cell; the same for every camera. Frame 0 is the reference portrait.</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-cell wide">
+            <video class="demo-video" id="tdv2sample" data-row="tdv2" data-method="ours" src="media/training_data_e/sample.mp4" poster="media/training_data_e/sample.jpg"
+                   width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">One Stage-I training sample</b>
+            <span class="v2-text">The four outermost cameras form the 2×2 canvas (832×1216) and the frontal camera forms the
+            416×608 stream. Both are generated jointly, conditioned on the reference portrait and on the clip's audio
+            (81 frames at 25 fps, 3.24 s). <button class="button is-small is-rounded audio-btn" data-row="tdv2" data-target="tdv2sample" data-label="Play with audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Play with audio</span></button></span>
+          </div>
+        </div>
+        <h4 class="title is-5 has-text-centered block-title">Stage II · one training scene</h4>
+        <div class="columns is-centered v2-row">
+          <div class="column v2-cell">
+            <img src="media/training_data_v2/s2_views.jpg" width="100%" loading="lazy" alt="16 views at one time index">
+            <b class="block v2-title">16 views at one time index</b>
+            <span class="v2-text">Every camera is matted the same way. 16 time indices per clip and 648 clips give 10,368 scenes.</span>
+          </div>
+          <div class="column v2-cell">
+            <img src="media/training_data_v2/s2_sources.jpg" width="100%" loading="lazy" alt="5 source cameras">
+            <b class="block v2-title">5 source cameras</b>
+            <span class="v2-text">Sampled from the 16-camera pool for each scene; the most frontal one is the clean anchor.</span>
+          </div>
+          <div class="column v2-cell">
+            <img src="media/training_data_v2/s2_corrupt.jpg" width="100%" loading="lazy" alt="View-aware corruption">
+            <b class="block v2-title">View-aware corruption</b>
+            <span class="v2-text">The four non-anchor sources get grid distortion (shown, training code) and camera jitter (pose only). Targets are never corrupted.</span>
+          </div>
+          <div class="column v2-cell">
+            <img src="media/training_data_v2/s2_targets.jpg" width="100%" loading="lazy" alt="3 extra target views">
+            <b class="block v2-title">3 extra target views</b>
+            <span class="v2-text">Real captures from the remaining cameras supervise novel viewpoints; their background is drawn per scene from white, black or gray.</span>
+          </div>
+          <div class="column v2-cell">
+            <img src="media/training_data_v2/s2_time.jpg" width="100%" loading="lazy" alt="16 time indices">
+            <b class="block v2-title">16 time indices</b>
+            <span class="v2-text">Frames 0, 5, 11, …, 80 of the clip; each is reconstructed independently.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Training data. -->
+<section class="section results-section" id="results">
+  <div class="container is-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+        <h3 class="title is-4 has-text-centered">Free-Viewpoint Talking Avatars from One Portrait</h3>
+        <p class="has-text-centered results-intro">In-the-wild portraits driven by real recordings at their natural length.
+        For every subject the same Gaussian avatar sequence is rendered from the front and while the camera makes one full
+        turn around the head. Videos autoplay muted; <b>Audio</b> unmutes one subject at a time.</p>
+<h4 class="title is-5 has-text-centered click-more"><a href="./more_results_1.html">(Click to see more results)</a></h4>
+<div class="result-group ours-group">
+  <div class="columns is-mobile is-multiline method-heads is-hidden-mobile"><div class="column is-1 row-label"></div><div class="column has-text-centered ours-cap"><b>Subject 01</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 4.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 02</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 3.9 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 03</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 11.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 04</b><br><span class="is-size-7 has-text-grey-dark">Swahili · speech · 7.7 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 08</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 6.7 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 09</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 12.0 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 11</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 13.5 s</span></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="oit0"><div class="column is-1 row-label"><b>Input portrait</b></div><div class="column"><img src="media/ours/itw/025/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 01 · input</span></div><div class="column"><img src="media/ours/itw/106/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 02 · input</span></div><div class="column"><img src="media/ours/itw/110/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 03 · input</span></div><div class="column"><img src="media/ours/itw/102/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 04 · input</span></div><div class="column"><img src="media/ours/itw/009/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 08 · input</span></div><div class="column"><img src="media/ours/itw/085/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 09 · input</span></div><div class="column"><img src="media/ours/itw/089/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 11 · input</span></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="oit0"><div class="column is-1 row-label"><b>Frontal</b><br><span class="is-size-7 has-text-grey">talking</span></div><div class="column"><video class="demo-video" id="oit0s0" data-row="oit0" data-method="ours" src="media/ours/itw/025/frontal.mp4" poster="media/ours/itw/025/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s0" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s1" data-row="oit0" data-method="ours" src="media/ours/itw/106/frontal.mp4" poster="media/ours/itw/106/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s1" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s2" data-row="oit0" data-method="ours" src="media/ours/itw/110/frontal.mp4" poster="media/ours/itw/110/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s2" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s3" data-row="oit0" data-method="ours" src="media/ours/itw/102/frontal.mp4" poster="media/ours/itw/102/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s3" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s4" data-row="oit0" data-method="ours" src="media/ours/itw/009/frontal.mp4" poster="media/ours/itw/009/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s4" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s5" data-row="oit0" data-method="ours" src="media/ours/itw/085/frontal.mp4" poster="media/ours/itw/085/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s5" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="oit0s6" data-row="oit0" data-method="ours" src="media/ours/itw/089/frontal.mp4" poster="media/ours/itw/089/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="oit0" data-target="oit0s6" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="oit0"><div class="column is-1 row-label"><b>360° orbit</b><br><span class="is-size-7 has-text-grey">talking while the camera makes one turn with a pitch dip</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/025/orbit360.mp4" poster="media/ours/itw/025/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/106/orbit360.mp4" poster="media/ours/itw/106/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/110/orbit360.mp4" poster="media/ours/itw/110/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/102/orbit360.mp4" poster="media/ours/itw/102/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/009/orbit360.mp4" poster="media/ours/itw/009/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/085/orbit360.mp4" poster="media/ours/itw/085/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="oit0" data-method="ours" src="media/ours/itw/089/orbit360.mp4" poster="media/ours/itw/089/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div></div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section results-section">
+  <div class="container is-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4 has-text-centered" id="comparisons">In-the-Wild Comparisons with Prior Methods</h3>
+        <p class="has-text-centered results-intro">Single portrait + real recording → talking avatar. Top row: frontal rendering. Bottom row: camera demo (coverage sweep, then the final frame is frozen and orbited 360° with a pitch nod). Baselines: Real3D-Portrait, SDTalk and NeRFFaceSpeech, driven by the same image and audio. Videos autoplay muted; <b>Play with audio</b> unmutes the Ours column of that row.</p>
+<h4 class="title is-5 has-text-centered click-more"><a href="./more_comparisons_1.html">(Click to see more results)</a></h4>
+<div class="result-group">
+  <div class="has-text-centered result-label"><b class="is-size-6">Demo 01</b> <span class="has-text-grey-dark is-size-7">· English speech · 4.6 s</span> <span class="has-text-grey is-size-7 demo-quote">“John Taylor, who had supported her through college, was interested in cotton.”</span></div>
+  <div class="columns is-mobile is-multiline method-heads is-hidden-mobile"><div class="column method-head">Input portrait</div><div class="column method-head ours-head">Ours</div><div class="column method-head">Real3D-Portrait</div><div class="column method-head">SDTalk</div><div class="column method-head">NeRFFaceSpeech</div></div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d01f">
+    <div class="column ref-col"><div class="sq"><img src="media/v2/demo_01/reference.jpg" alt="input portrait" class="ref-img"></div><span class="cell-label is-hidden-tablet">Input portrait</span></div>
+<div class="column"><div class="sq"><video class="demo-video" data-row="d01f" data-method="ours" src="media/v2/demo_01/frontal_ours.mp4" poster="media/v2/demo_01/frontal_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video></div><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d01f" data-method="real3d" src="media/v2/demo_01/frontal_real3d.mp4" poster="media/v2/demo_01/frontal_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d01f" data-method="sdtalk" src="media/v2/demo_01/frontal_sdtalk.mp4" poster="media/v2/demo_01/frontal_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d01f" data-method="nerffacespeech" src="media/v2/demo_01/frontal_nerffacespeech.mp4" poster="media/v2/demo_01/frontal_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d01d">
+    <div class="column row-caption">
+          <b class="is-size-6">Camera demo</b>
+          <span class="is-size-7 has-text-grey">coverage sweep → frontal → final-frame 360° orbit → pitch nod</span>
+          <button class="button is-small is-rounded audio-btn" data-row="d01d" data-label="Play with audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Play with audio</span></button>
+        </div>
+<div class="column"><video class="demo-video" data-row="d01d" data-method="ours" src="media/v2/demo_01/demo_ours.mp4" poster="media/v2/demo_01/demo_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d01d" data-method="real3d" src="media/v2/demo_01/demo_real3d.mp4" poster="media/v2/demo_01/demo_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d01d" data-method="sdtalk" src="media/v2/demo_01/demo_sdtalk.mp4" poster="media/v2/demo_01/demo_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d01d" data-method="nerffacespeech" src="media/v2/demo_01/demo_nerffacespeech.mp4" poster="media/v2/demo_01/demo_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+</div>
+<div class="result-group">
+  <div class="has-text-centered result-label"><b class="is-size-6">Demo 02</b> <span class="has-text-grey-dark is-size-7">· English speech · 6.6 s</span> <span class="has-text-grey is-size-7 demo-quote">“After early nightfall, the yellow lamps would light up here and there the squalid quarter of the brothels.”</span></div>
+  <div class="columns is-mobile is-multiline method-heads is-hidden-mobile"><div class="column method-head">Input portrait</div><div class="column method-head ours-head">Ours</div><div class="column method-head">Real3D-Portrait</div><div class="column method-head">SDTalk</div><div class="column method-head">NeRFFaceSpeech</div></div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d02f">
+    <div class="column ref-col"><div class="sq"><img src="media/v2/demo_02/reference.jpg" alt="input portrait" class="ref-img"></div><span class="cell-label is-hidden-tablet">Input portrait</span></div>
+<div class="column"><div class="sq"><video class="demo-video" data-row="d02f" data-method="ours" src="media/v2/demo_02/frontal_ours.mp4" poster="media/v2/demo_02/frontal_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video></div><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d02f" data-method="real3d" src="media/v2/demo_02/frontal_real3d.mp4" poster="media/v2/demo_02/frontal_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d02f" data-method="sdtalk" src="media/v2/demo_02/frontal_sdtalk.mp4" poster="media/v2/demo_02/frontal_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d02f" data-method="nerffacespeech" src="media/v2/demo_02/frontal_nerffacespeech.mp4" poster="media/v2/demo_02/frontal_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d02d">
+    <div class="column row-caption">
+          <b class="is-size-6">Camera demo</b>
+          <span class="is-size-7 has-text-grey">coverage sweep → frontal → final-frame 360° orbit → pitch nod</span>
+          <button class="button is-small is-rounded audio-btn" data-row="d02d" data-label="Play with audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Play with audio</span></button>
+        </div>
+<div class="column"><video class="demo-video" data-row="d02d" data-method="ours" src="media/v2/demo_02/demo_ours.mp4" poster="media/v2/demo_02/demo_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d02d" data-method="real3d" src="media/v2/demo_02/demo_real3d.mp4" poster="media/v2/demo_02/demo_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d02d" data-method="sdtalk" src="media/v2/demo_02/demo_sdtalk.mp4" poster="media/v2/demo_02/demo_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d02d" data-method="nerffacespeech" src="media/v2/demo_02/demo_nerffacespeech.mp4" poster="media/v2/demo_02/demo_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+</div>
+<div class="result-group">
+  <div class="has-text-centered result-label"><b class="is-size-6">Demo 03</b> <span class="has-text-grey-dark is-size-7">· English speech · 12.1 s</span> <span class="has-text-grey is-size-7 demo-quote">“In Mumbai, Thursday is gonna be cloudy, while Friday will be mostly clear, with a high of twenty eight and a low of both days.”</span></div>
+  <div class="columns is-mobile is-multiline method-heads is-hidden-mobile"><div class="column method-head">Input portrait</div><div class="column method-head ours-head">Ours</div><div class="column method-head">Real3D-Portrait</div><div class="column method-head">SDTalk</div><div class="column method-head">NeRFFaceSpeech</div></div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d03f">
+    <div class="column ref-col"><div class="sq"><img src="media/v2/demo_03/reference.jpg" alt="input portrait" class="ref-img"></div><span class="cell-label is-hidden-tablet">Input portrait</span></div>
+<div class="column"><div class="sq"><video class="demo-video" data-row="d03f" data-method="ours" src="media/v2/demo_03/frontal_ours.mp4" poster="media/v2/demo_03/frontal_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video></div><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d03f" data-method="real3d" src="media/v2/demo_03/frontal_real3d.mp4" poster="media/v2/demo_03/frontal_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d03f" data-method="sdtalk" src="media/v2/demo_03/frontal_sdtalk.mp4" poster="media/v2/demo_03/frontal_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d03f" data-method="nerffacespeech" src="media/v2/demo_03/frontal_nerffacespeech.mp4" poster="media/v2/demo_03/frontal_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+  <div class="columns is-mobile is-multiline sync-row" data-row="d03d">
+    <div class="column row-caption">
+          <b class="is-size-6">Camera demo</b>
+          <span class="is-size-7 has-text-grey">coverage sweep → frontal → final-frame 360° orbit → pitch nod</span>
+          <button class="button is-small is-rounded audio-btn" data-row="d03d" data-label="Play with audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Play with audio</span></button>
+        </div>
+<div class="column"><video class="demo-video" data-row="d03d" data-method="ours" src="media/v2/demo_03/demo_ours.mp4" poster="media/v2/demo_03/demo_ours.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Ours</span></div>
+<div class="column"><video class="demo-video" data-row="d03d" data-method="real3d" src="media/v2/demo_03/demo_real3d.mp4" poster="media/v2/demo_03/demo_real3d.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">Real3D-Portrait</span></div>
+<div class="column"><video class="demo-video" data-row="d03d" data-method="sdtalk" src="media/v2/demo_03/demo_sdtalk.mp4" poster="media/v2/demo_03/demo_sdtalk.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">SDTalk</span></div>
+<div class="column"><video class="demo-video" data-row="d03d" data-method="nerffacespeech" src="media/v2/demo_03/demo_nerffacespeech.mp4" poster="media/v2/demo_03/demo_nerffacespeech.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet">NeRFFaceSpeech</span></div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- add the venue once the paper is public -->
+    <pre><code>@misc{jiang2026audiolift,
+  title  = {AudioLift: Audio-Driven Single Image to Full-Head Gaussian Avatar via Multi-view Video Generation},
+  author = {Jiang, Zhuoyuan and Lyu, Weijie and Wang, Xiaoyuan and Shen, Tiancheng and Yang, Ming-Hsuan},
+  year   = {2026},
+}</code></pre>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page is adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page
+            (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>).
+            The in-the-wild portraits and recordings come from public datasets and Wikimedia Commons; sources and
+            licenses are listed in the paper appendix.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function() {
+  var rows = {};
+  document.querySelectorAll('video.demo-video').forEach(function(v) {
+    var rid = v.dataset.row; (rows[rid] = rows[rid] || []).push(v);
+  });
+  function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function() {}); }
+  function playRow(rid) {
+    var vs = rows[rid] || []; if (!vs.length) return;
+    vs.forEach(safePlay);                     // start loading / playing (muted autoplay is allowed)
+    Promise.all(vs.map(function(v) {
+      return new Promise(function(res) {
+        if (v.readyState >= 2) res(); else v.addEventListener('canplay', function() { res(); }, { once: true });
+      });
+    })).then(function() {                     // once every video of the row can play, restart them together
+      vs.forEach(function(v) { try { v.currentTime = 0; } catch (e) {} safePlay(v); });
+    });
+  }
+  function pauseRow(rid) { (rows[rid] || []).forEach(function(v) { v.pause(); }); }
+  // a row id may span several .sync-row elements (the Ours gallery syncs input/frontal/orbit together)
+  var visible = {};
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        var rid = en.target.dataset.row;
+        visible[rid] = visible[rid] || new Set();
+        if (en.isIntersecting) { var was = visible[rid].size; visible[rid].add(en.target); if (!was) playRow(rid); }
+        else { visible[rid].delete(en.target); if (!visible[rid].size) pauseRow(rid); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.sync-row').forEach(function(el) { io.observe(el); });
+  } else {
+    Object.keys(rows).forEach(playRow);
+  }
+  // Audio buttons: unmute one video (data-target, or the first Ours video of the row) and restart its row in sync.
+  var audibleBtn = null;
+  function setBtn(b, on) {
+    b.classList.toggle('is-info', on);
+    b.querySelector('.btn-text').textContent = on ? 'Mute' : b.dataset.label;
+    b.querySelector('i').className = on ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+  }
+  // Long examples: native controls; "Play both in sync" starts the pair from 0 with sound only on the frontal video.
+  document.querySelectorAll('.play-both').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var g = btn.dataset.group, vs = Array.from(document.querySelectorAll('video.manual-video[data-group="' + g + '"]'));
+      var playing = vs.some(function(v) { return !v.paused; });
+      if (playing) { vs.forEach(function(v) { v.pause(); }); return; }
+      document.querySelectorAll('video.demo-video').forEach(function(v) { v.muted = true; });
+      if (audibleBtn) { setBtn(audibleBtn, false); audibleBtn = null; }
+      vs.forEach(function(v) { try { v.currentTime = 0; } catch (e) {} v.muted = !v.classList.contains('long-frontal'); safePlay(v); });
+    });
+    var g = btn.dataset.group;
+    document.querySelectorAll('video.manual-video[data-group="' + g + '"]').forEach(function(v) {
+      ['play', 'pause', 'ended'].forEach(function(ev) { v.addEventListener(ev, function() {
+        var any = Array.from(document.querySelectorAll('video.manual-video[data-group="' + g + '"]')).some(function(x) { return !x.paused && !x.ended; });
+        btn.querySelector('.btn-text').textContent = any ? 'Pause both' : 'Play both in sync';
+        btn.querySelector('i').className = any ? 'fas fa-pause' : 'fas fa-play';
+      }); });
+    });
+  });
+  document.querySelectorAll('.audio-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var rid = btn.dataset.row, vs = rows[rid] || [];
+      var target = btn.dataset.target ? document.getElementById(btn.dataset.target)
+                                      : vs.filter(function(v) { return v.dataset.method === 'ours'; })[0];
+      var turnOn = !(target && !target.muted);
+      document.querySelectorAll('video.demo-video').forEach(function(v) { v.muted = true; });
+      if (audibleBtn && audibleBtn !== btn) setBtn(audibleBtn, false);
+      if (turnOn && target) { target.muted = false; audibleBtn = btn; } else { audibleBtn = null; }
+      setBtn(btn, turnOn);
+      playRow(rid);
+    });
+  });
+})();
+</script>
+</body>
+</html>

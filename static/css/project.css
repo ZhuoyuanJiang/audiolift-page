@@ -1,0 +1,67 @@
+/* AudioLift project page: additions on top of the Nerfies template. */
+.result-group { margin-bottom: 2.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid #ececec; }
+.result-label { margin-bottom: 0.4rem; }
+.demo-quote { font-style: italic; }
+.method-heads .column { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+.method-head { text-align: center; font-weight: 700; font-size: 0.95rem; color: #363636; }
+.ours-head { color: hsl(204, 86%, 53%); }
+.sync-row .column { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+.demo-video { display: block; border-radius: 8px; background: #f3f3f3; }
+.ref-col { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
+.ref-img { border-radius: 8px; width: 100%; height: auto; display: block; }
+/* square box: portrait media is shown as its central square (CSS crop, files untouched) */
+.sq { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 8px; background: #f3f3f3; }
+.sq video, .sq img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; display: block; border-radius: 0; }
+.cell-label { display: block; text-align: center; font-size: 0.8rem; font-weight: 700; color: #363636; margin-top: 0.15rem; }
+.ours-label { color: hsl(204, 86%, 53%); }
+.row-caption { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0.35rem; }
+.audio-btn { margin-top: 0.25rem; }
+.sub-btn { margin-top: 0.2rem; height: 1.7em; font-size: 0.72rem; padding-left: 0.6em; padding-right: 0.7em; }
+.results-intro { max-width: 60rem; margin: 0 auto 1.25rem auto; color: #4a4a4a; }
+.page-nav { margin-bottom: 1.5rem; }
+.click-more { margin-bottom: 1.25rem; }
+.video-placeholder { background: #f5f5f5; border: 1px dashed #c8c8c8; }
+.video-placeholder-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #7a7a7a; }
+.method-text { margin-top: 0.75rem; font-size: 0.95rem; }
+.training-data { padding-top: 0; }
+.v2-row .column { padding: 0.5rem; }
+.v2-cell { text-align: center; }
+.v2-cell img, .v2-cell video { display: block; border-radius: 8px; background: #f3f3f3; }
+.v2-title { margin-top: 0.5rem; margin-bottom: 0.15rem; font-size: 0.95rem; }
+.v2-text { display: block; font-size: 0.82rem; line-height: 1.3; color: #4a4a4a; }
+/* Stage I evolution chain: raw + alpha -> composite -> training sample */
+.flow-row { display: flex; align-items: flex-start; justify-content: center; gap: 0.6rem; margin: 0 0 1rem 0; }
+.flow-cell { flex: 0 0 20%; text-align: center; }
+.flow-cell.wide { flex: 0 0 31%; }
+.flow-cell video { display: block; border-radius: 8px; background: #f3f3f3; }
+.flow-cell .audio-btn { margin-top: 0.4rem; }
+.flow-arrow { flex: 0 0 auto; font-size: 2.2rem; color: #7a7a7a; line-height: 1; align-self: center; padding-bottom: 4rem; }
+@media screen and (max-width: 768px) {
+  .flow-row { flex-wrap: wrap; }
+  .flow-cell { flex: 0 0 48%; }
+  .flow-cell.wide { flex: 0 0 100%; }
+  .flow-arrow { display: none; }
+}
+.tdata-caption { margin-top: 0.6rem; font-size: 0.95rem; }
+.audio-wrap { display: inline-block; margin-left: 0.4rem; vertical-align: middle; }
+.teaser .hero-body { padding-bottom: 1.5rem; }
+/* Ours-only gallery: narrow label column + 6 portrait cells */
+.ours-group { background: #fafafa; border-radius: 12px; padding: 0.75rem 0.75rem 1rem 0.75rem; border-bottom: none; }
+.ours-row .column { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+.row-label { display: flex; flex-direction: column; justify-content: center; text-align: center; font-size: 0.9rem; line-height: 1.25; }
+.ours-cap { font-size: 0.9rem; line-height: 1.25; }
+.block-title { margin-top: 1.5rem; margin-bottom: 0.25rem !important; }
+.long-group { background: #fafafa; border-radius: 12px; padding: 0.75rem 0.75rem 1rem 0.75rem; border-bottom: none; }
+.long-quote { max-width: 60rem; margin: 0 auto 0.5rem auto; text-align: center; }
+.manual-video { display: block; border-radius: 8px; background: #111; }
+.long-row .column { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+.long-controls { margin-top: 0.5rem; }
+.block-note { margin-bottom: 0.75rem; font-size: 0.9rem; }
+/* Phone width: Bulma's flex columns refused to pair up here (every 50% column wrapped onto its own line),
+   so the rows switch to a two-column grid and each cell carries its own label. */
+@media screen and (max-width: 768px) {
+  .sync-row, .long-row { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0; }
+  .sync-row .column, .long-row .column { width: auto !important; max-width: none !important; flex: none; padding: 0; }
+  .sync-row .row-label, .sync-row .is-hidden-mobile { display: none !important; }
+  .row-caption { padding: 0.5rem 0 !important; }
+}

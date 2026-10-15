@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="AudioLift turns a single portrait and audio into a full-head 3D Gaussian talking avatar by generating synchronized multi-view videos and lifting them with an inconsistency-robust Gaussian reconstructor.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AudioLift: Head-and-shoulders portraits</title>
+  <link rel="icon" href="./static/images/icon.png" type="image/png">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/project.css">
+</head>
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-3 publication-title">
+            AudioLift: Audio-Driven Single Image to<br>Full-Head Gaussian Avatar via Multi-view Video Generation
+          </h1>
+          <div class="is-size-5 publication-authors"><span class="author-block">Head-and-shoulders portraits</span></div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./index.html" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-home"></i></span>
+                  <span>Back to Homepage</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section results-section">
+  <div class="container is-fullhd">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">More Results</h2>
+        <h3 class="title is-4 has-text-centered">Head-and-shoulders portraits</h3>
+        <p class="has-text-centered results-intro">Source images that already show head and shoulders, as the method expects (Wikimedia Commons photographs and paintings, one illustration). Rows: input portrait, frontal rendering, and the same avatar sequence while the camera makes one turn with a pitch dip. Videos autoplay muted; <b>Audio</b> unmutes one subject at a time.</p>
+        <h3 class="title is-5 has-text-centered page-nav"><a href="./index.html#results">(Homepage)</a> &nbsp;|&nbsp; Page 1 &nbsp;|&nbsp; <a href="./more_results_2.html">Page 2</a> &nbsp;|&nbsp; <a href="./more_results_3.html">Page 3</a></h3>
+<div class="result-group ours-group">
+  <div class="columns is-mobile is-multiline method-heads is-hidden-mobile"><div class="column is-1 row-label"></div><div class="column has-text-centered ours-cap"><b>Subject 01</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 4.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 02</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 3.9 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 03</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 11.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 04</b><br><span class="is-size-7 has-text-grey-dark">Swahili · speech · 7.7 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 05</b><br><span class="is-size-7 has-text-grey-dark">English · speech · 3.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 06</b><br><span class="is-size-7 has-text-grey-dark">English · singing · 12.5 s</span></div><div class="column has-text-centered ours-cap"><b>Subject 07</b><br><span class="is-size-7 has-text-grey-dark">French · speech · 11.6 s</span></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="og0"><div class="column is-1 row-label"><b>Input portrait</b></div><div class="column"><img src="media/ours/itw/025/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 01 · input</span></div><div class="column"><img src="media/ours/itw/106/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 02 · input</span></div><div class="column"><img src="media/ours/itw/110/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 03 · input</span></div><div class="column"><img src="media/ours/itw/102/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 04 · input</span></div><div class="column"><img src="media/ours/itw/135/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 05 · input</span></div><div class="column"><img src="media/ours/itw/133/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 06 · input</span></div><div class="column"><img src="media/ours/itw/138/reference.jpg" alt="input portrait" class="ref-img"><span class="cell-label is-hidden-tablet">Subject 07 · input</span></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="og0"><div class="column is-1 row-label"><b>Frontal</b><br><span class="is-size-7 has-text-grey">talking</span></div><div class="column"><video class="demo-video" id="og0s0" data-row="og0" data-method="ours" src="media/ours/itw/025/frontal.mp4" poster="media/ours/itw/025/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s0" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s1" data-row="og0" data-method="ours" src="media/ours/itw/106/frontal.mp4" poster="media/ours/itw/106/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s1" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s2" data-row="og0" data-method="ours" src="media/ours/itw/110/frontal.mp4" poster="media/ours/itw/110/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s2" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s3" data-row="og0" data-method="ours" src="media/ours/itw/102/frontal.mp4" poster="media/ours/itw/102/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s3" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s4" data-row="og0" data-method="ours" src="media/ours/itw/135/frontal.mp4" poster="media/ours/itw/135/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s4" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s5" data-row="og0" data-method="ours" src="media/ours/itw/133/frontal.mp4" poster="media/ours/itw/133/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s5" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div><div class="column"><video class="demo-video" id="og0s6" data-row="og0" data-method="ours" src="media/ours/itw/138/frontal.mp4" poster="media/ours/itw/138/frontal.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">Frontal</span><div class="has-text-centered"><button class="button is-small is-rounded audio-btn sub-btn" data-row="og0" data-target="og0s6" data-label="Audio"><span class="icon"><i class="fas fa-volume-up"></i></span><span class="btn-text">Audio</span></button></div></div></div>
+  <div class="columns is-mobile is-multiline sync-row ours-row" data-row="og0"><div class="column is-1 row-label"><b>360° orbit</b><br><span class="is-size-7 has-text-grey">talking while the camera makes one turn with a pitch dip</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/025/orbit360.mp4" poster="media/ours/itw/025/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/106/orbit360.mp4" poster="media/ours/itw/106/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/110/orbit360.mp4" poster="media/ours/itw/110/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/102/orbit360.mp4" poster="media/ours/itw/102/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/135/orbit360.mp4" poster="media/ours/itw/135/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/133/orbit360.mp4" poster="media/ours/itw/133/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div><div class="column"><video class="demo-video" data-row="og0" data-method="ours" src="media/ours/itw/138/orbit360.mp4" poster="media/ours/itw/138/orbit360.jpg" width="100%" muted loop playsinline preload="metadata"></video><span class="cell-label is-hidden-tablet ours-label">360° orbit</span></div></div>
+</div>
+        <h3 class="title is-5 has-text-centered page-nav"><a href="./index.html#results">(Homepage)</a> &nbsp;|&nbsp; Page 1 &nbsp;|&nbsp; <a href="./more_results_2.html">Page 2</a> &nbsp;|&nbsp; <a href="./more_results_3.html">Page 3</a></h3>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page is adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page
+            (<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>).
+            The in-the-wild portraits and recordings come from public datasets and Wikimedia Commons; sources and
+            licenses are listed in the paper appendix.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+(function() {
+  var rows = {};
+  document.querySelectorAll('video.demo-video').forEach(function(v) {
+    var rid = v.dataset.row; (rows[rid] = rows[rid] || []).push(v);
+  });
+  function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function() {}); }
+  function playRow(rid) {
+    var vs = rows[rid] || []; if (!vs.length) return;
+    vs.forEach(safePlay);                     // start loading / playing (muted autoplay is allowed)
+    Promise.all(vs.map(function(v) {
+      return new Promise(function(res) {
+        if (v.readyState >= 2) res(); else v.addEventListener('canplay', function() { res(); }, { once: true });
+      });
+    })).then(function() {                     // once every video of the row can play, restart them together
+      vs.forEach(function(v) { try { v.currentTime = 0; } catch (e) {} safePlay(v); });
+    });
+  }
+  function pauseRow(rid) { (rows[rid] || []).forEach(function(v) { v.pause(); }); }
+  // a row id may span several .sync-row elements (the Ours gallery syncs input/frontal/orbit together)
+  var visible = {};
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        var rid = en.target.dataset.row;
+        visible[rid] = visible[rid] || new Set();
+        if (en.isIntersecting) { var was = visible[rid].size; visible[rid].add(en.target); if (!was) playRow(rid); }
+        else { visible[rid].delete(en.target); if (!visible[rid].size) pauseRow(rid); }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.sync-row').forEach(function(el) { io.observe(el); });
+  } else {
+    Object.keys(rows).forEach(playRow);
+  }
+  // Audio buttons: unmute one video (data-target, or the first Ours video of the row) and restart its row in sync.
+  var audibleBtn = null;
+  function setBtn(b, on) {
+    b.classList.toggle('is-info', on);
+    b.querySelector('.btn-text').textContent = on ? 'Mute' : b.dataset.label;
+    b.querySelector('i').className = on ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+  }
+  // Long examples: native controls; "Play both in sync" starts the pair from 0 with sound only on the frontal video.
+  document.querySelectorAll('.play-both').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var g = btn.dataset.group, vs = Array.from(document.querySelectorAll('video.manual-video[data-group="' + g + '"]'));
+      var playing = vs.some(function(v) { return !v.paused; });
+      if (playing) { vs.forEach(function(v) { v.pause(); }); return; }
+      document.querySelectorAll('video.demo-video').forEach(function(v) { v.muted = true; });
+      if (audibleBtn) { setBtn(audibleBtn, false); audibleBtn = null; }
+      vs.forEach(function(v) { try { v.currentTime = 0; } catch (e) {} v.muted = !v.classList.contains('long-frontal'); safePlay(v); });
+    });
+    var g = btn.dataset.group;
+    document.querySelectorAll('video.manual-video[data-group="' + g + '"]').forEach(function(v) {
+      ['play', 'pause', 'ended'].forEach(function(ev) { v.addEventListener(ev, function() {
+        var any = Array.from(document.querySelectorAll('video.manual-video[data-group="' + g + '"]')).some(function(x) { return !x.paused && !x.ended; });
+        btn.querySelector('.btn-text').textContent = any ? 'Pause both' : 'Play both in sync';
+        btn.querySelector('i').className = any ? 'fas fa-pause' : 'fas fa-play';
+      }); });
+    });
+  });
+  document.querySelectorAll('.audio-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var rid = btn.dataset.row, vs = rows[rid] || [];
+      var target = btn.dataset.target ? document.getElementById(btn.dataset.target)
+                                      : vs.filter(function(v) { return v.dataset.method === 'ours'; })[0];
+      var turnOn = !(target && !target.muted);
+      document.querySelectorAll('video.demo-video').forEach(function(v) { v.muted = true; });
+      if (audibleBtn && audibleBtn !== btn) setBtn(audibleBtn, false);
+      if (turnOn && target) { target.muted = false; audibleBtn = btn; } else { audibleBtn = null; }
+      setBtn(btn, turnOn);
+      playRow(rid);
+    });
+  });
+})();
+</script>
+</body>
+</html>
