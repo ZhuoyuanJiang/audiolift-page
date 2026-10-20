@@ -43,6 +43,12 @@
   .flow-arrow { display: none; }
 }
 .tdata-caption { margin-top: 0.6rem; font-size: 0.95rem; }
+/* Demo Training Data row: user 2026-10-20 "就和 Method 差不多一样大就行了" -- the four portrait cells are capped at the
+   height of the Method figures (~18rem) and the row is centred, instead of filling the container at 456 px tall. */
+@media screen and (min-width: 769px) {
+  .sync-row[data-row="tdd"] { max-width: 58rem; margin-left: auto; margin-right: auto; }
+  .sync-row[data-row="tdd"] .v2-cell img, .sync-row[data-row="tdd"] .v2-cell video { height: 18rem; width: auto; max-width: 100%; margin: 0 auto; }
+}
 .audio-wrap { display: inline-block; margin-left: 0.4rem; vertical-align: middle; }
 .teaser .hero-body { padding-bottom: 1.5rem; }
 /* Ours-only gallery: narrow label column + 6 portrait cells */

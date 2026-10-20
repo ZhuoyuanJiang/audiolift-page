@@ -144,6 +144,45 @@
   </div>
 </section>
 <!--/ Method. -->
+<!-- Training data (demo). -->
+<section class="section training-data" id="training-data">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4 has-text-centered">Training Data</h3>
+        <div class="columns is-centered v2-row sync-row" data-row="tdd">
+          <div class="column v2-cell">
+            <img src="media/training_data_demo/original.jpg" width="100%" loading="lazy" alt="Original source view">
+            <b class="block v2-title">Original source view</b>
+            <span class="v2-text">One of the four non-anchor source views of a training scene, as captured. The anchor view is never corrupted.</span>
+          </div>
+          <div class="column v2-cell">
+            <video class="demo-video" data-row="tdd" data-method="ours" src="media/training_data_demo/grid_warp.mp4" poster="media/training_data_demo/grid_warp.jpg" width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">Grid distortion</b>
+            <span class="v2-text">The image is warped by a smooth random grid while the camera parameters stay as they were (shown at twice the training strength).</span>
+          </div>
+          <div class="column v2-cell">
+            <video class="demo-video" data-row="tdd" data-method="ours" src="media/training_data_demo/cam_jitter.mp4" poster="media/training_data_demo/cam_jitter.jpg" width="100%" muted loop playsinline preload="metadata"></video>
+            <b class="block v2-title">Camera jitter</b>
+            <span class="v2-text">The source camera is rotated by up to 3° about its up axis and 1.5° about its right axis while the image stays unchanged.</span>
+          </div>
+          <div class="column v2-cell">
+            <img src="media/training_data_demo/rear_distill.jpg" width="100%" loading="lazy" alt="Rear-view distillation">
+            <b class="block v2-title">Rear-view distillation</b>
+            <span class="v2-text">No camera sees the back of the head, so a frozen pretrained teacher renders it from three rear viewpoints and those renders supervise the student.</span>
+          </div>
+        </div>
+        <div class="content has-text-justified tdata-caption">
+          We train on the NeRSemble multi-view speech dataset, captured with <b>16 static cameras</b>. Because the views generated
+          by Stage I are never perfectly consistent, we corrupt the non-anchor source views with <b>grid distortion</b> and
+          <b>camera jitter</b>, so the reconstructor learns to tolerate that inconsistency. The back of the head, which no camera
+          sees, is distilled from a frozen pretrained prior.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--/ Training data (demo). -->
 <section class="section results-section" id="results">
   <div class="container is-fullhd">
     <div class="columns is-centered">
